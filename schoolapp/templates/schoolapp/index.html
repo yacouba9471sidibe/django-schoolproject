@@ -1,0 +1,23 @@
+{% extends 'schoolapp/base.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <h2>Статьи</h2>
+    <ul>
+        {% for p in posts %}
+            {% if p.is_published %}
+                <li>
+                    {% if p.photo %}
+                        <img src="{{ p.photo.url }}" width="100" style="float: left; margin-right: 10px;">
+                    {% endif %}
+                    <h3>{{ p.title }}</h3>
+                    <p>{{ p.content }}</p>
+                    {% if not forloop.last %}<hr>{% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

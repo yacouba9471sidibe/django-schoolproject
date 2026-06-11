@@ -1,0 +1,21 @@
+{% extends 'schoolapp/base.html' %}
+
+{% block title %}Обратная связь{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p><label>Ваше имя: <input type="text" name="name"></label></p>
+        <p><label>Email: <input type="email" name="email"></label></p>
+        <p><label>Сообщение:<br><textarea name="message" rows="5" cols="30"></textarea></label></p>
+        <button type="submit">Отправить (POST)</button>
+    </form>
+
+    {% if result %}
+        <h2>Данные получены:</h2>
+        <p>Имя: {{ result.name }}</p>
+        <p>Email: {{ result.email }}</p>
+        <p>Сообщение: {{ result.message }}</p>
+    {% endif %}
+{% endblock %}

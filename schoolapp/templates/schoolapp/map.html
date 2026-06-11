@@ -1,0 +1,24 @@
+{% extends 'schoolapp/base.html' %}
+
+{% block title %}Яндекс.Карты{% endblock %}
+
+{% block content %}
+<h1>Моё местоположение</h1>
+<div id="map" style="width: 100%; height: 500px;"></div>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=a31be263-54c6-4b94-abcd-e8bcbf6b50f1&lang=ru_RU"></script>
+<script>
+    ymaps.ready(init);
+    function init() {
+        var myMap = new ymaps.Map("map", {
+            center: [55.751574, 37.573856],
+            zoom: 12
+        });
+        var myPlacemark = new ymaps.Placemark([55.751574, 37.573856], {
+            hintContent: 'Мой адрес',
+            balloonContent: 'Ваш адрес: ici votre adresse'
+        });
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>
+{% endblock %}

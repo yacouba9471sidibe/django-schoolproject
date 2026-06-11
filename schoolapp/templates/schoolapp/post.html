@@ -1,0 +1,15 @@
+{% extends 'schoolapp/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+
+    {% if post.photo %}
+        <img src="{{ post.photo.url }}" alt="{{ post.title }}" style="max-width: 100%;">
+    {% else %}
+        <p>Pas de photo</p>
+    {% endif %}
+
+    <p>{{ post.content|linebreaks }}</p>
+{% endblock %}

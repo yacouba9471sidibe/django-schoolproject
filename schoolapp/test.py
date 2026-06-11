@@ -1,0 +1,1 @@
+print("Le fichier test est chargé")
