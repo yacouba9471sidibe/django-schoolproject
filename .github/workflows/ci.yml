@@ -24,6 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Install flake8
+      run: pip install flake8
+
+    - name: Run linter
+      run: flake8 .
+
     - name: Run Django checks
       run: python manage.py check
 
@@ -32,3 +38,6 @@ jobs:
 
     - name: Run tests
       run: python manage.py test
+
+    - name: Build Docker image
+      run: docker build -t django-app .
